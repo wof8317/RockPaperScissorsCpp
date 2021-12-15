@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 
+//Initialize Variables
 const char ROCK = 'r';
 const char PAPER = 'p';
 const char SCISSORS = 's';
@@ -17,6 +18,7 @@ void clear_console() {
 #endif
 }
 
+//Randomizer
 char getComputerOption() {
 	srand(time(0));
 	// Random Number
@@ -30,6 +32,7 @@ char getComputerOption() {
 		return 's';
 }
 
+//Display User Options
 char getUserOption() {
 	char choice;
 	std::cout << "Rock, Paper, Scissors\n";
@@ -39,7 +42,8 @@ char getUserOption() {
 	std::cout << "(s) for Scissors\n";
 	std::cout << "Enter your choice (r/p/s): ";
 	std::cin >> choice;
- 
+ 	
+	//Error Check in case user entered an invalid option
 	while (choice != 'r' && choice != 'p' && choice != 's') {
 		std::cout << "Invalid option, please try again" << std::endl;
 		std::cout << "(r) for Rock\n";
@@ -51,12 +55,14 @@ char getUserOption() {
 	return choice;
 }
 
+//Show what you and the computer selected
 void showSelectedOption (char option) {
 	if (option == 'r') std::cout << "Rock" << std::endl;
 	if (option == 'p') std::cout << "Paper" << std::endl;
 	if (option == 's') std::cout << "Scissors" << std::endl;
 }
 
+//Determines the winner of the round (or not if it's a tie)
 void chooseWinner (char userChoice, char computerChoice) {
 	if (userChoice == ROCK && computerChoice == PAPER) {
 		std::cout << "Computer Wins: Rock beats Paper." << std::endl;
@@ -86,6 +92,8 @@ void chooseWinner (char userChoice, char computerChoice) {
 		std::cout << "Tie Game." << std::endl;
 	}
 }
+
+//Give user option to play another round
 void playAgain() {
 	std::cout << "Continue Playing? (y/n) ";
 	std::cin >> repeater;
@@ -94,6 +102,7 @@ void playAgain() {
 	}
 }
 
+//Display Score
 void winCount() {
 	
 	std::cout << "User: " << plrWinCount << " wins" << std::endl;
